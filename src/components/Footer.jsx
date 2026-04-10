@@ -4,7 +4,14 @@ export default function Footer() {
       <div className="container">
         <div className="footer-top">
           <div className="footer-brand">
-            <div className="footer-logo">🌙 ARTEMIS II</div>
+            <div className="navbar-brand">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Artemis_II_patch.svg/400px-Artemis_II_patch.svg.png"
+                alt="Artemis II patch"
+                className="navbar-patch"
+              />
+              Artemis II
+            </div>
             <p>Site multimídia educacional sobre a missão Artemis II da NASA — o retorno da humanidade à Lua.</p>
           </div>
           <div className="footer-links">
