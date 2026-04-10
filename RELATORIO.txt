@@ -1,0 +1,182 @@
+RELATORIO DE TRABALHO — ESTUDO DIRIGIDO 01
+Disciplina: Sistemas Multimidia
+Tema: Missao Artemis II — O Retorno da Humanidade a Lua
+
+=============================================================
+1. INTRODUCAO
+=============================================================
+
+O tema escolhido para este trabalho foi a missao Artemis II da NASA, o primeiro
+voo tripulado do programa Artemis, realizado em abril de 2026. A missao levou
+quatro astronautas ao redor da Lua pela primeira vez desde o programa Apollo,
+em 1972. O objetivo do conteudo produzido foi apresentar a missao de forma
+visual, informativa e acessivel, usando um site multimidia com imagens, textos
+e animacoes.
+
+=============================================================
+2. PLANEJAMENTO DO CONTEUDO
+=============================================================
+
+Publico-alvo:
+Estudantes, entusiastas do espaco e qualquer pessoa interessada em exploraao
+espacial humana.
+
+Objetivo do conteudo:
+Apresentar a missao Artemis II de forma completa: o que foi a missao, quem
+foram os astronautas, como aconteceu o voo, quais foram os marcos historicos
+e registros fotograficos oficiais da NASA.
+
+Formato escolhido:
+Site multimidia em React, publicado no GitHub Pages. O site é de pagina unica
+(scroll continuo), dividido em seções: Hero, Missao, Tripulacao, Linha do Tempo,
+Tecnologia (foguete e espaconave), Galeria de Fotos e Marcos Historicos.
+
+=============================================================
+3. PRODUCAO DAS MIDIAS
+=============================================================
+
+3.1 Producao do Texto
+
+Ferramenta: escrita manual baseada em pesquisa nas fontes oficiais da NASA.
+Fontes: site oficial nasa.gov/mission/artemis-ii, paginas de cada astronauta
+no site da NASA, e artigos publicados pela NASA sobre a missao.
+
+O texto foi adaptado para o portugues e organizado nas secoes do site. O nivel
+de linguagem foi pensado para ser claro e direto, sem termos tecnicos excessivos.
+
+Processo: levantamento de informacoes sobre datas (lancamento em 01/04/2026,
+amerissagem em 10/04/2026), detalhes tecnicos do foguete SLS e capsuloa Orion,
+biografias dos quatro astronautas e marcos historicos da missao.
+
+3.2 Producao das Imagens
+
+Ferramenta: as imagens sao todas fotografias oficiais da NASA e da Agencia
+Espacial Canadense, obtidas via scraping do site nasa.gov e da API de imagens
+da NASA (images-assets.nasa.gov).
+
+Processo: navegacao e inspecao do HTML do site nasa.gov/mission/artemis-ii
+para identificar as URLs diretas das imagens. As imagens foram selecionadas
+por relevancia: retrato dos astronautas, lancamento do SLS, rollout do foguete,
+fotos tiradas de dentro da capsula Orion durante a missao (serie art002e), e
+o patch oficial da missao Artemis II.
+
+Formatos: JPEG (fotos da missao), SVG/PNG (patch da missao).
+Hospedagem: as imagens ficam nos servidores da NASA e da Wikimedia Commons,
+sendo carregadas diretamente no site sem necessidade de upload.
+
+3.3 Producao da Animacao
+
+Ferramenta: JavaScript puro com a API Canvas do navegador, implementado em
+React (useRef + useEffect).
+
+Processo: foi criado um canvas animado que ocupa todo o fundo da secao Hero.
+Nele, 200 estrelas com brilho variavel (efeito de piscar) sao renderizadas e
+animadas em loop continuo usando requestAnimationFrame. Cada estrela tem
+posicao, raio e velocidade de variacao de opacidade aleatorios.
+
+Alem disso, foi incluido um circulo que simula a Lua ao canto inferior direito
+do Hero, usando gradiente radial do CSS.
+
+3.4 Producao do Site (Desenvolvimento Web)
+
+Ferramenta: React 19 + Vite 8, com CSS puro (sem bibliotecas externas).
+Deploy: GitHub Pages via pacote gh-pages.
+
+Processo: estruturacao do projeto com create-vite (template React), criacao
+de componentes separados para cada secao (Navbar, Hero, Mission, Crew,
+Timeline, Spacecraft, Gallery, Milestones, Footer). Estilo visual com tema
+escuro inspirado nas cores da Lua: preto profundo, cinza prata lunar e dourado
+ocre.
+
+=============================================================
+4. INTEGRACAO DAS MIDIAS
+=============================================================
+
+O site une todos os tipos de midia em uma unica pagina:
+
+- Texto informativo: cada secao apresenta textos descritivos sobre a missao.
+- Imagens: fotos reais da NASA aparecem nas secoes de tripulacao, tecnologia
+  e galeria; o patch da missao aparece no Hero e na navbar.
+- Animacao: o fundo estrellado com canvas JavaScript cria imersao visual
+  na entrada do site.
+- Layout responsivo: o CSS usa grid e media queries para adaptar o site a
+  diferentes tamanhos de tela.
+
+Os elementos foram combinados de forma a criar uma experiencia de "deslocamento"
+pelo espaco conforme o usuario rola a pagina. O tema visual escuro (cor de espaco)
+com acentos em prata lunar e dourado reforca a identidade da missao.
+
+=============================================================
+5. FORMATO E PUBLICACAO
+=============================================================
+
+Formato final: site de pagina unica (SPA — Single Page Application).
+Plataforma: GitHub Pages (hospedagem gratuita para repositorios publicos).
+Tecnologia: React + Vite, compilado para HTML/CSS/JS estatico.
+
+Formatos dos arquivos:
+- Codigo-fonte: .jsx, .css, .html, .js
+- Imagens: carregadas externamente via URL (JPEG, PNG, SVG)
+- Build final: arquivos estaticos em /dist (index.html + assets)
+
+Como publicar:
+1. Criar um repositorio no GitHub chamado "artemis2-site"
+2. No arquivo package.json, substituir SEU-USUARIO pelo usuario do GitHub
+3. Rodar os comandos:
+   git init
+   git add .
+   git commit -m "Artemis II site"
+   git remote add origin https://github.com/SEU-USUARIO/artemis2-site.git
+   git push -u origin main
+   npm run deploy
+4. O site estara disponivel em: https://SEU-USUARIO.github.io/artemis2-site
+
+=============================================================
+6. CONCLUSAO
+=============================================================
+
+Dificuldades encontradas:
+A maior dificuldade foi encontrar URLs de imagens confiaveis e de alta qualidade
+diretamente nos servidores da NASA. Muitas URLs antigas de fotos dos astronautas
+retornavam erro 404, sendo necessario identificar os IDs corretos das imagens
+na API da NASA (images-assets.nasa.gov). Outro desafio foi garantir que o
+site fosse responsivo e visualmente coerente em diferentes dispositivos.
+
+Aprendizados obtidos:
+O trabalho permitiu entender na pratica como diferentes tipos de midia se
+complementam em um produto digital. A animacao canvas, por exemplo, adiciona
+vida ao site sem depender de arquivos externos. O uso de imagens oficiais da
+NASA em vez de banco de imagens generico tornou o conteudo autentico e
+educativo.
+
+Experiencia com producao multimidia:
+A producao de um site multimidia exige planejar com antecedencia quais midias
+serao usadas e como elas se integram. Aprender a usar React para componentizar
+o conteudo facilitou muito a organizacao e manutencao do codigo. A publicacao
+no GitHub Pages e um processo simples mas que ensina conceitos importantes de
+deploy e hospedagem de conteudo web.
+
+=============================================================
+LINK DO CONTEUDO PRODUZIDO
+=============================================================
+
+O site sera publicado em:
+https://SEU-USUARIO.github.io/artemis2-site
+
+(Substituir SEU-USUARIO pelo usuario do GitHub antes de publicar)
+
+Codigo-fonte disponivel em:
+https://github.com/SEU-USUARIO/artemis2-site
+
+=============================================================
+FONTES CONSULTADAS
+=============================================================
+
+- NASA Artemis II Mission Page: https://www.nasa.gov/mission/artemis-ii/
+- NASA Image and Video Library: https://images.nasa.gov/
+- NASA Astronaut Bios: https://www.nasa.gov/astronauts/
+- Artemis II Multimedia: https://www.nasa.gov/artemis-ii-multimedia/
+- Wikipedia — Artemis 2: https://en.wikipedia.org/wiki/Artemis_2
+- Canadian Space Agency: https://www.asc-csa.gc.ca/
+
+=============================================================
